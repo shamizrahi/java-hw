@@ -1,3 +1,13 @@
+/*
+Name: Sharon Mizrahi
+Email: smizrahi@bu.edu
+Problem 8 - PairFinder
+
+This class has two methods one with time efficiency O(n^2) and
+the other with time efficiency O(nlogn). It takes elements of an array
+and returns the sum of the elements if they sum k.
+*/
+
 import java.util.*;
 
 public class PairFinder {
@@ -23,12 +33,12 @@ public class PairFinder {
     */
     public static void findPairSumsFaster(int k, int[] arr){
         
-        Sort.mergeSort(arr);
+        Sort.mergeSort(arr); //O(nlogn)
 
         int left = 0;
         int right = arr.length-1;
 
-        do{ 
+        do{ //O(1) -> constant.
             if(arr[left] + arr[right] == k){ // if left + right = k then print
                 System.out.println(arr[left] + " + " + arr[right] + " = " + k);
                 left++;
@@ -50,6 +60,9 @@ public class PairFinder {
         int arr[] =  {10, 4, 7, 7, 8, 5, 15};
         System.out.println("FP 1: ");
         findPairSums(12, arr);
+        int arr3[] =  {17, 8, 26, 42, 8, 0, 16, 21};
+        System.out.println("FP 1: ");
+        findPairSums(42, arr3);
         System.out.println("FP 2: ");
         int arr2[] = SortCount.randomArray(8);
         System.out.println(Arrays.toString(arr2));

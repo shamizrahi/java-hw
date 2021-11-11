@@ -32,7 +32,7 @@ public class MergeIntersect {
             smallest = arr2.length;
 
         }
-
+        //setting smallest length to return array
         intersect = new int[smallest];
 
 
@@ -43,14 +43,13 @@ public class MergeIntersect {
 
         if(arr1[index_1] <= 1 && arr2[index_2] <= 1){ //taking care of negative elements
 
-            if(arr1[index_1] == arr2[index_2]){
-                intersect[next] = arr1[index_1];
-                prev = intersect[next];
+            if(arr1[index_1] == arr2[index_2]){ // when index 1 is diff than previous index
+                intersect[next] = arr1[index_1]; //intersect next will be equal to index 1
+                prev = intersect[next]; // prev new index
                 next++;
             }
 
         }
-    
 
         while((index_1 < arr1.length) && (index_2 < arr2.length)){
 
@@ -60,9 +59,10 @@ public class MergeIntersect {
                     prev = intersect[next]; // prev new index
                     next++;
                
-                    
-                }else if(arr1[index_1] == prev){ //skip duplicates
+                }else if(arr1[index_1] == prev){ //skip duplicates arr1
                     index_1++;
+                
+                }else if(arr2[index_2] == prev){ //skip duplicates arr2
                     index_2++;
                 }
 
@@ -74,21 +74,16 @@ public class MergeIntersect {
 
             }
 
-
         }
 
-
         return intersect; // return intersect 
-
-
-        
     }
 
 
     public static void main(String[] args){
 
-        int[] a1 = {-1, 10, 3, 5, 7 ,9};
-        int[] a2 = {-1, 9, 6, 5, 4, 3, 2, 3};
+        int[] a1 = {-1, 10, 3, 5, 7 ,-9};
+        int[] a2 = {-1, -9, 6, 5, 4, -3, 2, 3};
 
         int[] res = MergeIntersect.intersect(a1, a2);
         System.out.println(Arrays.toString(res));
