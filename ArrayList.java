@@ -130,4 +130,52 @@ public class ArrayList implements List {
         // still needs to be implemented
         return null;
     }
+
+    /*
+     * removeAll - this method removes all occurence of an item in the
+     * arrayList
+     */
+
+    public boolean removeAll(Object item){
+
+        int index = 0; //index and counter 
+        boolean remAll = false; // return variable
+
+        for(int i = 0; i < length; i++){ //iterating 
+            
+            if(!items[i].equals(item)){ //if the item is equal to items[i]
+                items[index] = items[i]; //let items[index] be equal to item[i]
+                index++; //increment index
+            }
+        }
+
+        if(index == length){
+            remAll = false; //no items were removed
+
+        }else{
+            items[index] = null; //elements after index = null
+            length = index; //length is now index since we removed elements
+            remAll = true;
+        }
+
+        return remAll;
+
+    }
+
+    
+
+
+    public static void main (String[] args){
+
+        String[] letters = {"a", "b", "c", "a", "c", "d", "e", "a"};
+        ArrayList list1 = new ArrayList(letters);
+        System.out.println(list1);
+        System.out.println(list1.removeAll("a"));
+        System.out.println(list1);
+        System.out.println(list1.removeAll("c"));
+        System.out.println(list1);
+        System.out.println(list1.removeAll("x"));
+        System.out.println(list1);
+    
+    }
 }

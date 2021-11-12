@@ -201,4 +201,53 @@ public class LLList implements List {
             return item;
         }
     }
+
+     /*
+     * removeAll - this method removes all occurence of an item in the
+     * LLList
+     */
+
+    public boolean removeAll(Object item){
+
+        Node prev = head; //list object reference
+        Node trav = head.next; //first node
+        int count = 0;
+        boolean remAll = false;
+
+        do{ //iterating 
+            
+            if(!trav.item.equals(item)){ //if the item is equal to items[i]
+                prev = trav; //prev node = next node
+                trav = trav.next; // trav references next element
+            }else{
+                prev.next = trav.next; //skipping item
+                trav = trav.next; // trav references next elemet
+                count++; //counting repeated item
+            }
+        }while(trav != null);
+
+        if(count > 0){ 
+            remAll = true; 
+        }else{
+            remAll = false;
+        }
+
+        return remAll;
+
+    }
+
+    public static void main (String[] args){
+
+
+        String[] letters = {"a", "b", "c", "a", "c", "d", "e", "a"};
+        LLList list2 = new LLList(letters);
+        System.out.println(list2);
+        System.out.println(list2.removeAll("a"));
+        System.out.println(list2);
+        System.out.println(list2.removeAll("x"));
+
+
+    }
+
+
 }
